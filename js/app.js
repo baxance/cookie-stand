@@ -1,5 +1,7 @@
 'use strict'
 
+////////////////////Lab06 code sample, copy pasted for other locations///////////////////////////
+
 // let storeHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm']
 
 // let seattle = { // 23/65 min/max 6.3 avg
@@ -35,7 +37,7 @@
 
 /////////////////Construction Notation Begins//////////////////////////////////////////
 
-// lecture example for creating a table
+////////////////////////////////////////////////////////lecture example for creating a table
 // let tableBody = document.getElementById('table-body')
 
 // let rowOne = document.createElement('tr'); // creates <tr> </tr> tags (table row)
@@ -53,7 +55,10 @@
 //create a Constructor Function called SalmonCookies or something that will contain am Object of the Properties and Method shared between store locations
 
 
-let storeHours = ['Store Locations:', '6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm', 'Daily Location Total:']; // global array for hours
+let storeHours = ['Store Location:', '6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm', 'Daily Location Total:']; // global array for hours and other things
+
+let tableBody = document.getElementById('table-body')
+
 
 function Store(name, minCust, maxCust, avgSale, daySales, sumSales){
   this.name = name; //location of store
@@ -65,14 +70,11 @@ function Store(name, minCust, maxCust, avgSale, daySales, sumSales){
   // this.sales = function() {
 }
 
-
 // create function create elements to display on html
 
-storeHours = ['Store Locations:', '6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm', 'Daily Location Total:']; // global array for hours
+function openHours() { // function for top row of table, headers for location and totals and the hours each rgn takes place in
 
-function openHours() { // function for top row of 
-
-  let tableBody = document.getElementById('table-body')
+  // let tableBody = document.getElementById('table-body')
 
   let hoursRow = document.createElement('tr');
 
@@ -86,20 +88,55 @@ function openHours() { // function for top row of
 }
 openHours();
 
+// RNG function/loop
+Store.prototype.RNG = function () {
+  for (let j = 0; j < storeHours.length; j++) {
+    let salesPerHour = Math.random() * (this.maxCust - this.minCust) + this.minCust
+    salesPerHour = Math.floor(salesPerHour * this.avgSale)
+
+    this.daySales.push(salesPerHour);
+    this.sumSales = salesPerHour + this.sumSales
+  }
+  
+}
 
 
+Store.prototype.display = function () {
+  this.RNG();
+  let storeHoursDisplay = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm']; // this is unnecessary, using the array as a table for the times in the beginning is the conflict probably, change it to something else?
+  let column = document.createElement('tr');
+  let row = document.createElement('td');
+  column.textContent = this.name;
+  row.appendChild(column);
 
-// let seaRow = document.createElement('tr');
-// let tokyoRow = document.createElement('tr');
-// let dubRow = document.createElement('tr');
-// let parisRow = document.createElement('tr');
-// let limaRow = document.createElement('tr');
+  for (let k = 0; k < storeHoursDisplay.length; k++) {
+
+    row = document.createElement('td');
+    row.textContent = this.daySales[k];
+
+    column.appendChild(row);
+
+  }
+
+  row = document.createElement('td');
+  row.textContent = this.sumSales;
+  column.appendChild(row);
+  tableBody.appendChild(column)
+
+};
+
 // name string, minimum customers, max customers, avg sales per customer
 let seattle = new Store('Seattle', 23, 65, 6.3);
 let tokyo = new Store('Tokyo', 3, 24, 1.2);
 let dubai = new Store('Dubai', 11, 38, 3.7);
 let paris = new Store('Paris', 20, 38, 2.3);
 let lima = new Store('Lima', 2, 16, 4.6);
+
+seattle.display();
+tokyo.display();
+dubai.display();
+paris.display();
+lima.display();
 
 //   for ( let j = 0; j > 5; j++) {
 
