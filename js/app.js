@@ -55,9 +55,24 @@
 //create a Constructor Function called SalmonCookies or something that will contain am Object of the Properties and Method shared between store locations
 
 
-let storeHours = ['Store Location:', '6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm', 'Daily Location Total:']; // global array for hours and other things
-
 let tableBody = document.getElementById('table-body')
+
+let storeHours = ['Store Locations ','6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm']; // global array for hours and other things
+
+function timeAndTotal() {
+  // let hoursHeader = document.createElement('th')
+
+  for (let i = 0; i < storeHours.length; i++) {
+    let hoursHeader = document.createElement('th')
+    hoursHeader.textContent = storeHours[i];
+    tableBody.appendChild(hoursHeader);
+  }
+  let locTote = document.createElement('tfoot')
+  locTote.textContent = 'Daily Location Total'
+  tableBody.appendChild(locTote);
+}
+
+timeAndTotal();
 
 
 function Store(name, minCust, maxCust, avgSale, daySales, sumSales){
@@ -72,29 +87,29 @@ function Store(name, minCust, maxCust, avgSale, daySales, sumSales){
 
 // create function create elements to display on html
 
-function openHours() { // function for top row of table, headers for location and totals and the hours each rgn takes place in
+// function openHours() { // function for top row of table, headers for location and totals and the hours each rgn takes place in
 
-  // let tableBody = document.getElementById('table-body')
+//   // let tableBody = document.getElementById('table-body')
 
-  let hoursRow = document.createElement('tr');
+//   let hoursRow = document.createElement('tr');
 
-  for (let i =0; i < storeHours.length; i++) {
-    let hoursColumn = document.createElement('td');
-    hoursColumn.textContent = storeHours[i];
-    hoursRow.appendChild(hoursColumn);
-  }
-  tableBody.appendChild(hoursRow);
+//   for (let i =0; i < storeHours.length; i++) {
+//     let hoursColumn = document.createElement('td');
+//     hoursColumn.textContent = storeHours[i];
+//     hoursRow.appendChild(hoursColumn);
+//   }
+//   tableBody.appendChild(hoursRow);
 
-}
-openHours();
+// }
+// openHours();
 
 // RNG function/loop
 Store.prototype.RNG = function () {
   for (let j = 0; j < storeHours.length; j++) {
-    let salesPerHour = Math.random() * (this.maxCust - this.minCust) + this.minCust
+    let salesPerHour = Math.random() * (this.maxCust - this.minCust) + this.minCust //generate RN with a range between the minimum and maximum. what would the +1 do?
     salesPerHour = Math.floor(salesPerHour * this.avgSale)
 
-    this.daySales.push(salesPerHour);
+    this.daySales.push(salesPerHour); //pushes 
     this.sumSales = salesPerHour + this.sumSales
   }
   
