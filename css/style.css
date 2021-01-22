@@ -5,3 +5,13 @@ table {
 td {
   border: black thin solid;
 }
+
+form {
+  height: 146px;
+  width: 759px;
+  margin: 15px 0;
+}
+
+label {
+  padding: 10px;
+}
