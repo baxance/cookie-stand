@@ -103,7 +103,7 @@ storeForm.addEventListener('submit', function (form) {
   formTable.appendChild(maxRow);
   
   avgColumn.textContent = 'Average Sales per Customer: ';
-  avgRow.textContent = avgRow;  
+  avgRow.textContent = avgSale;  
   formTable.appendChild(avgColumn);
   formTable.appendChild(avgRow);
 
