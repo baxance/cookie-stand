@@ -3,36 +3,65 @@
 <html>
 
   <head>
-    <title>salmon cookie</title>
+    <title>Pat's Salmon Cookies</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="home page" href="index.html">
+    <link rel="reset" href="reset.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   </head>
 
-  <body>
+  <body id="salesBody">
 
-    <div>
-      <h3>Seattle</h3>    
-      <ul id="salesListSea" ></ul>
-    </div>
+    <header>
+      <section class = "header">Pat's Salmon Cookies<br> Sales Page<br><a href="index.html">Locations and Contact Information</a>
+      </section>
+    </header>
 
-    <div>
-      <h3>Tokyo</h3>    
-      <ul id="salesListTokyo"></ul>
-    </div>
+  <main id="main">
 
-    <div>
-      <h3>Dubai</h3>    
-      <ul id="salesListDub"></ul>
-    </div>
+    <table>
+      <tbody id="table-body">
+      </tbody>
+    </table>
 
-    <div>
-      <h3>Paris</h3>    
-      <ul id="salesListParis"></ul>
-    </div>
+    <form id="storeForm">
+        <fieldset>
+          <label>
+            Store Location"
+            <input type="text" name="name">
+          </label>
+          <label>
+            Low Customer Traffic:
+            <input type="text" name="minCust">
+          </label>
+          <label>
+            High Customer Traffic:
+            <input type="text" name="maxCust">
+          </label>
+          <label>
+            Average Sales per Customer:
+            <input type="text" name="avgSale">
+          </label>
+        </fieldset>
+        <button type="submit">Submit Form</button>
+    </form>
 
-    <div>
-      <h3>Lima</h3>    
-      <ul id="salesListLima"></ul>
-    </div>
+    <table>
+      <tbody id="newStore"></tbody>
+    </table>
+
+    <footer >
+      <p>
+        These cookies have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
+      </p>
+      <ul>
+        <li>Trademark: somthingsomething llc</li>
+        <li><a href="Pat@Salmoncookies.com">email me!</a></li>
+      </ul>
+    </footer>
     
+  </main>
     <script src="/js/app.js"></script>
   </body>
 </html>

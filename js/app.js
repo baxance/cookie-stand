@@ -1,162 +1,131 @@
 'use strict'
 
-let cookHours = ['6am: ','7am: ','8am:','9am:','10am:','11am:','12pm:','1pm:','2pm: ','3pm: ','4pm: ','5pm: ','6pm: ','7pm: ']
+let tableBody = document.getElementById('table-body')
 
-let seattle = { // 23/65 min/max 6.3 avg
-  name: 'Seattle',
-  minCust: 23,
-  maxCust: 65,
-  avgCust: 6.3,
-  cookSales: [],
-  totalSales: 0,
-  sales: function () {
-    let salesList = document.getElementById('salesListSea');
-    for (let i = 0; i < cookHours.length; i++) { //for each index of cookHours (time open) runs RNG
-      let salesPerHour = Math.random() * (this.maxCust - this.minCust) + this.minCust; // generates random number between the minimum and maximum key:values
-      salesPerHour = Math.floor(salesPerHour * this.avgCust); // takes the randomly generated numberand multiplies by average customer/hr and then divides by the total amount of hours open (14) to get 
+let storeHours = ['Store Locations ','6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm']; // global array for hours and other things
 
-      let column = document.createElement('li'); //create variable 'column' that creates a list element
-      column.textContent = cookHours[i] + salesPerHour + ' cookies'; //for each array index print into list item the indexed string, the RGN from the function and the string ' cookies'
+function timeAndTotal() {
+  // let hoursHeader = document.createElement('th')
 
-      salesList.appendChild(column); //create list element separate of the above
-      this.totalSales = this.totalSales + salesPerHour;  
-      this.cookSales.push(this.totalSales);// for each number generated it's added to the key totalSales which is then saved to an array
-    
-    }
-    
-    let columnTotal = document.createElement('li');
-    columnTotal.textContent = 'Total: ' + this.totalSales + ' cookies',
-    salesList.appendChild(columnTotal);
-
-  } // all of the above is within the code block for the function 
-};
-
-seattle.sales();
-
-/////////////////ctrl + C / ctrl + V Time!//////////////////////////////////////////
-
-let tokyo = { // 3/24 min/max 1.2 avg
-    name: 'Tokyo',
-    minCust: 3,
-    maxCust: 24,
-    avgCust: 1.2,
-    cookSales: [],
-    totalSales: 0,
-    sales: function () {
-      let salesList = document.getElementById('salesListTokyo');
-      for (let i = 0; i < cookHours.length; i++) {
-        let salesPerHour = Math.random() * (this.maxCust - this.minCust) + this.minCust;
-        salesPerHour = Math.floor(salesPerHour * this.avgCust);
-  
-        let column = document.createElement('li');
-        column.textContent = cookHours[i] + salesPerHour + ' cookies';
-  
-        salesList.appendChild(column);
-        this.totalSales = this.totalSales + salesPerHour;
-        this.cookSales.push(this.totalSales);
-      
-      }
-      
-      let columnTotal = document.createElement('li');
-      columnTotal.textContent = 'Total: ' + this.totalSales + ' cookies',
-      salesList.appendChild(columnTotal);
-  
-    }
-  };
-
-tokyo.sales();
-
-
-let dubai = { // 11/38 min/max 3.7 avg
-  name: 'Dubai',
-  minCust: 11,
-  maxCust: 38,
-  avgCust: 3.7,
-  cookSales: [],
-  totalSales: 0,
-  sales: function () {
-    let salesList = document.getElementById('salesListDub');
-    for (let i = 0; i < cookHours.length; i++) {
-      let salesPerHour = Math.random() * (this.maxCust - this.minCust) + this.minCust;
-      salesPerHour = Math.floor(salesPerHour * this.avgCust);
-
-      let column = document.createElement('li');
-      column.textContent = cookHours[i] + salesPerHour + ' cookies';
-
-      salesList.appendChild(column);
-      this.totalSales = this.totalSales + salesPerHour;
-      this.cookSales.push(this.totalSales);
-    
-    }
-    
-    let columnTotal = document.createElement('li');
-    columnTotal.textContent = 'Total: ' + this.totalSales + ' cookies',
-    salesList.appendChild(columnTotal);
-
+  for (let i = 0; i < storeHours.length; i++) {
+    let hoursHeader = document.createElement('th')
+    hoursHeader.textContent = storeHours[i];
+    tableBody.appendChild(hoursHeader);
   }
-};
-
-dubai.sales();
-
-let paris = { // 20/38 min/max 2.3 avg
-  name: 'Paris',
-  minCust: 20,
-  maxCust: 38,
-  avgCust: 2.3,
-  cookSales: [],
-  totalSales: 0,
-  sales: function () {
-    let salesList = document.getElementById('salesListParis');
-    for (let i = 0; i < cookHours.length; i++) {
-      let salesPerHour = Math.random() * (this.maxCust - this.minCust) + this.minCust;
-      salesPerHour = Math.floor(salesPerHour * this.avgCust);
-
-      let column = document.createElement('li');
-      column.textContent = cookHours[i] + salesPerHour + ' cookies';
-
-      salesList.appendChild(column);
-      this.totalSales = this.totalSales + salesPerHour;
-      this.cookSales.push(this.totalSales);
-    
-    }
-    
-    let columnTotal = document.createElement('li');
-    columnTotal.textContent = 'Total: ' + this.totalSales + ' cookies',
-    salesList.appendChild(columnTotal);
-
-  }
-};
-
-paris.sales();
-
-
-let lima = { // 2/16 min/max 4.6 avg
-name: 'Lima',
-minCust: 20,
-maxCust: 38,
-avgCust: 2.3,
-cookSales: [],
-totalSales: 0,
-sales: function () {
-  let salesList = document.getElementById('salesListLima');
-  for (let i = 0; i < cookHours.length; i++) {
-    let salesPerHour = Math.random() * (this.maxCust - this.minCust) + this.minCust;
-    salesPerHour = Math.floor(salesPerHour * this.avgCust);
-
-    let column = document.createElement('li');
-    column.textContent = cookHours[i] + salesPerHour + ' cookies';
-
-    salesList.appendChild(column);
-    this.totalSales = this.totalSales + salesPerHour;
-    this.cookSales.push(this.totalSales);
-  
-  }
-  
-  let columnTotal = document.createElement('li');
-  columnTotal.textContent = 'Total: ' + this.totalSales + ' cookies',
-  salesList.appendChild(columnTotal);
-
+  let locTote = document.createElement('tfoot')
+  locTote.textContent = 'Daily Location Total'
+  tableBody.appendChild(locTote);
 }
+
+timeAndTotal();
+
+
+function Store(name, minCust, maxCust, avgSale, daySales, sumSales){
+  this.name = name; //location of store
+  this.minCust = minCust; //minimum amount of customers/day
+  this.maxCust = maxCust; // maximum customers/day
+  this.avgSale = avgSale; //avg cookies sold per customer
+  this.daySales = []; // empty array
+  this.sumSales = 0; // 
+  // this.sales = function() {
+}
+
+// RNG function/loop
+Store.prototype.RNG = function () {
+  for (let j = 0; j < storeHours.length; j++) {
+    let salesPerHour = Math.random() * (this.maxCust - this.minCust) + this.minCust //generate RN with a range between the minimum and maximum. what would the +1 do?
+    salesPerHour = Math.floor(salesPerHour * this.avgSale)
+
+    this.daySales.push(salesPerHour); //pushes 
+    this.sumSales = salesPerHour + this.sumSales
+  }
+}
+
+
+Store.prototype.display = function () {
+  this.RNG();
+  let storeHoursDisplay = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm']; // this is unnecessary, using the array as a table for the times in the beginning is the conflict probably, change it to something else?
+  let column = document.createElement('tr');
+  let row = document.createElement('td');
+  column.textContent = this.name;
+  row.appendChild(column);
+
+  for (let k = 0; k < storeHoursDisplay.length; k++) {
+
+    row = document.createElement('td');
+    row.textContent = this.daySales[k];
+
+    column.appendChild(row);
+  }
+
+  row = document.createElement('td');
+  row.textContent = this.sumSales;
+  column.appendChild(row);
+  tableBody.appendChild(column)
 };
 
-lima.sales();
+let storeForm = document.getElementById('storeForm');
+let formTable = document.getElementById('newStore')
+
+storeForm.addEventListener('submit', function (form) {
+  form.preventDefault();
+  let name = form.target.name.value;
+  let minCust = form.target.minCust.value;
+  let maxCust = form.target.maxCust.value;
+  let avgSale = form.target.avgSale.value;
+
+  let nameColumn = document.createElement('tr');
+  let minColumn = document.createElement('tr');
+  let maxColumn = document.createElement('tr');
+  let avgColumn = document.createElement('tr');
+
+  let nameRow = document.createElement('td');
+  let minRow = document.createElement('td');
+  let maxRow = document.createElement('td');
+  let avgRow = document.createElement('td');
+
+  nameColumn.textContent = 'Store Location: ';
+  nameRow.textContent = name;
+  formTable.appendChild(nameColumn);
+  formTable.appendChild(nameRow);
+  
+  
+  
+  minColumn.textContent = 'Low Customer Traffic: ';
+  minRow.textContent = minCust;
+  formTable.appendChild(minColumn);
+  formTable.appendChild(minRow);
+  
+  
+  maxColumn.textContent = 'High Customer Traffoc: ';
+  maxRow.textContent = maxCust;
+  formTable.appendChild(maxColumn);
+  formTable.appendChild(maxRow);
+  
+  avgColumn.textContent = 'Average Sales per Customer: ';
+  avgRow.textContent = avgSale;  
+  formTable.appendChild(avgColumn);
+  formTable.appendChild(avgRow);
+
+  
+  // let column = document.createElement('tr');
+  // let row = document.createElement('td');
+  // column.textContent = name;
+  // row.textContent = minCust;
+  // row.textContent = maxCust;
+  // row.textContent = avgSale;
+  // formTable.appendChild(column);
+});
+
+// name string, minimum customers, max customers, avg sales per customer
+let seattle = new Store('Seattle', 23, 65, 6.3);
+let tokyo = new Store('Tokyo', 3, 24, 1.2);
+let dubai = new Store('Dubai', 11, 38, 3.7);
+let paris = new Store('Paris', 20, 38, 2.3);
+let lima = new Store('Lima', 2, 16, 4.6);
+
+seattle.display();
+tokyo.display();
+dubai.display();
+paris.display();
+lima.display();
