@@ -1,17 +1,110 @@
+#salesBody {
+  background-color: rgb(136, 79, 41);
+}
+
 table {
-  border: black thin solid
+  border: palevioletred 5px solid;
+  border-radius: 25px;
+  font-family:Arial, Helvetica, sans-serif;
+  color: darkgreen;
+  text-shadow: black 1px 0px;
+  font-size: x-large;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 250px;
+
+  background-color: cadetblue;
 }
 
 td {
-  border: black thin solid;
+  border: black solid thin;
 }
 
 form {
-  height: 146px;
+  /* height: 146px;
   width: 759px;
-  margin: 15px 0;
+  margin: 15px 0; */
 }
 
 label {
+  padding: 10px;
+}
+
+/* .fish {
+  display: inline;
+} */
+
+.header::first-line {
+  font-family: 'Pacifico', cursive;
+  font-size: xx-large;
+  color: blue;
+  text-shadow: orangered 2px 2px;
+}
+
+.header {
+  margin-left: 280px;
+  padding-top: 85px;
+  color: navy;
+  font-size: large;
+}
+/* 
+.contact {
+
+} */
+
+header {
+  background-image: url(https://codefellows.github.io/code-201-guide/curriculum/class-06/lab/assets/salmon.png), url(https://i.pinimg.com/originals/b7/ff/e5/b7ffe556b5c07784ab6ee8e58ee08881.jpg);
+  background-repeat: no-repeat, repeat;
+  border: green solid thick;
+  border-radius: 25px;
+  height: 250px;
+  background-color:cornflowerblue;
+}
+
+main {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+footer {
+  margin:30px;
+  text-align: center;
+  list-style-type: none;
+  background-color: salmon;
+  border: skyblue thick solid;
+  border-radius: 25px;
+  list-style-type: none;
+}
+
+footer li {
+  display: block;
+  /* float: left; */
+}
+
+/* Store Page Specific Styling */
+
+#storeBody {
+  background-color: rgb(34, 28, 117);
+}
+
+.stores {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: blanchedalmond;
+  background-color: cadetblue;
+  display: inline-block;
+  margin-top: 25px;
+  border-radius: 25px;
+}
+
+.stores h2 {
+  color: brown;
+  margin: 15px;
+  background-color: burlywood;
+  border: green solid thick;
+  border-radius: 25px;
+  padding: 5px;
+}
+
+.stores p {
   padding: 10px;
 }
